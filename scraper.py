@@ -158,7 +158,9 @@ def scrape(dir, start_index=0, end_index=None):
                     df.at[index, "inferred_city"] = creator_city
                 if creator_state:
                     df.at[index, "inferred_state"] = creator_state
-                if index % 10 == 0:
+
+                # save to csv every 100 rows
+                if index % 100 == 0:
                     df.to_csv(file_path, index=False)
                     print(f"Finished processing {index} influencers in {filename}")
 
